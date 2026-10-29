@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Header</title>
+  
+  <!-- Fuentes Google: Space Grotesk y Syne (Regular 400 y Bold 700) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+
+  <style id="main-site-styles">
+    /* Fondos y reseteo general */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en el menú */
+    }
+
+    body {
+      background-color: #f4f5ef !important; /* Fondo por defecto */
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Header transparente superpuesto a la primera sección */
+    .main-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      background-color: transparent;
+      z-index: 10;
+    }
+
+    /* Logo principal del header */
+    .header-logo img {
+      width: auto;
+      height: 90px;
+      display: block;
+    }
+
+    /* Navegación (rectángulo) */
+    .header-nav {
+      background-color: #464648;
+      border-radius: 999px;
+      padding: 15px 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Texto del menú */
+    .header-nav a {
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 21pt;
+      font-weight: 400;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .header-nav a:hover {
+      opacity: 0.8;
+    }
+
+    /* Contenedor Hero / Primera Sección */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-image: url('imagen/Main.jpg');
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 140px 60px 40px 60px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    /* Logo con eslogan y texto descriptivo (derecha) */
+    .logo-slogan-container {
+      max-width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-slogan-container img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      display: block;
+    }
+
+    /* Estilos para el texto debajo del logo */
+    .hero-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+      font-size: 25pt;
+      color: #000000;
+      margin-top: 16px;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* Sección Contextualización */
+    .contextualizacion-section {
+      width: 100%;
+      margin-top: 100px;
+      line-height: 0;
+    }
+
+    .contextualizacion-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Sección Texto debajo de 2 manos.png */
+    .statement-section {
+      width: 100%;
+      padding: 80px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f5ef;
+      box-sizing: border-box;
+    }
+
+    .statement-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+      font-size: 28pt;
+      line-height: 1.4;
+      color: #000000;
+      text-align: center;
+      max-width: 1100px;
+    }
+
+    .statement-text strong {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+    }
+
+    /* --- SECCIÓN SELECCIONES --- */
+    .selecciones-section {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 60px 0 100px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #f4f5ef;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .gallery-container {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 30px;
+      width: 100vw;
+      margin-left: 0;
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
+
+    .gallery-card {
+      flex: 1;
+      max-width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      opacity: 1;
+      transition: flex 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease;
+    }
+
+    .gallery-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: #000000;
+      margin-bottom: 20px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.45s ease, opacity 0.45s ease;
+    }
+
+    .gallery-card-image-wrapper {
+      width: 100%;
+      height: 500px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+      transition: height 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
+    }
+
+    .gallery-card-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover {
+      flex: 1.3 !important;
+      max-width: 38vw !important;
+      z-index: 5;
+      opacity: 1 !important;
+    }
+
+    .gallery-card:hover .gallery-card-image-wrapper {
+      height: 580px !important;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    .gallery-card:hover .gallery-card-image-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .gallery-card:hover .gallery-card-title {
+      transform: translateY(-4px);
+    }
+
+    .gallery-container:hover .gallery-card:not(:hover) {
+      flex: 0.8 !important;
+      opacity: 0.6;
+    }
+
+    .gallery-container:hover .gallery-card:not(:hover) .gallery-card-image-wrapper {
+      height: 460px !important;
+    }
+
+    .gallery-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 50px;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #666666;
+      opacity: 0.35;
+      cursor: pointer;
+      transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.35s ease;
+    }
+
+    .dot.active {
+      background-color: #111111;
+      opacity: 1;
+      transform: scale(1.25);
+    }
+
+    /* --- SECCIÓN PUBLICACIONES / ESPECIFICACIONES --- */
+    .revista-section {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 80px 5vw;
+      box-sizing: border-box;
+      background-color: #f4f5ef;
+    }
+
+    .revista-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 60px;
+      row-gap: 60px;
+      width: 100%;
+    }
+
+    .revista-card {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 4px solid #b8ce38;
+    }
+
+    .revista-card:nth-child(odd) {
+      border-right: 4px solid #b8ce38;
+      padding-right: 60px;
+    }
+
+    .revista-card-image {
+      flex: 0 0 260px;
+      height: 350px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .revista-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .revista-card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      padding: 10px 0;
+    }
+
+    .revista-card-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #1a1a1a;
+    }
+
+    .revista-btn {
+      display: inline-block;
+      align-self: flex-start;
+      background-color: #b8ce38;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 14px;
+      transition: background-color 0.25s ease, transform 0.25s ease;
+      box-shadow: 0 4px 14px rgba(184, 206, 56, 0.35);
+    }
+
+    .revista-btn:hover {
+      background-color: #a4b82d;
+      transform: translateY(-3px);
+    }
+
+    /* --- SECCIÓN HUMAN×AI INFORMACIÓN EDITORIAL / REVISTA --- */
+    .info-dark-section {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      box-sizing: border-box;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    /* Grid 2x2 para el fondo intercalado en ajedrez */
+    .info-dark-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+    }
+
+    .info-dark-cell {
+      position: relative;
+      min-height: 480px;
+      box-sizing: border-box;
+    }
+
+    /* Asignación de colores de la cuadrícula (Ajedrez) */
+    .info-dark-cell.cell-bg-1 {
+      background-color: #4f5053; /* Gris claro (Superior Izquierda y Inferior Derecha) */
+    }
+
+    .info-dark-cell.cell-bg-2 {
+      background-color: #3b3d40; /* Gris oscuro (Superior Derecha y Inferior Izquierda) */
+    }
+
+    .info-dark-cell.branding {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 6vw;
+    }
+
+    .info-dark-logo {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+      display: block;
+      margin-bottom: 28px;
+    }
+
+    .info-dark-description {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: #e5e5e5;
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .info-dark-cell.image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 60px 40px;
+    }
+
+    .info-dark-cell.image-wrapper img {
+      width: 100%;
+      max-width: 680px;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .info-dark-cell.download-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 6vw;
+    }
+
+    .info-dark-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.2;
+      color: #b8ce38;
+      margin-bottom: 32px;
+    }
+
+    .info-dark-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #ffffff;
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 620px;
+    }
+
+    .info-download-btn {
+      display: inline-block;
+      background-color: #b8ce38;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 16px 44px;
+      border-radius: 14px;
+      transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 16px rgba(184, 206, 56, 0.35);
+    }
+
+    .info-download-btn:hover {
+      background-color: #a4b82d;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(184, 206, 56, 0.5);
+    }
+
+    /* --- SECCIÓN FOOTER / PIE DE PÁGINA --- */
+    .site-footer {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      display: flex;
+      box-sizing: border-box;
+      color: #ffffff;
+    }
+
+    .footer-left-col {
+      width: 38%;
+      background-color: #4a4a4d;
+      padding: 60px 4vw 60px 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .footer-brand-logo {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    .footer-social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-social-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-social-item:hover {
+      opacity: 0.8;
+    }
+
+    .footer-social-icon {
+      width: 52px;
+      height: 53px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .footer-right-col {
+      width: 62%;
+      background-color: #38393c;
+      padding: 60px 6vw 60px 4vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .footer-newsletter-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 70px;
+      flex-wrap: wrap;
+    }
+
+    .footer-newsletter-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.25;
+      max-width: 180px;
+    }
+
+    .footer-newsletter-input {
+      flex: 1;
+      min-width: 220px;
+      height: 48px;
+      border-radius: 999px;
+      border: none;
+      padding: 0 24px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      outline: none;
+      background-color: #ffffff;
+      color: #1a1a1a;
+    }
+
+    .footer-newsletter-btn {
+      height: 48px;
+      padding: 0 32px;
+      border-radius: 999px;
+      border: none;
+      background-color: #ffffff;
+      color: #111111;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-newsletter-btn:hover {
+      background-color: #e5e5e5;
+      transform: translateY(-2px);
+    }
+
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      row-gap: 16px;
+    }
+
+    .footer-links-col {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-item {
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.35;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-link-item:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1200px) {
+      .gallery-container {
+        gap: 20px;
+        padding: 0 20px;
+      }
+
+      .gallery-card-image-wrapper {
+        height: 400px;
+      }
+
+      .gallery-card:hover .gallery-card-image-wrapper {
+        height: 480px !important;
+      }
+
+      .revista-card-image {
+        flex: 0 0 210px;
+        height: 290px;
+      }
+
+      .revista-card-text {
+        font-size: 17px;
+      }
+
+      .info-dark-title {
+        font-size: 36px;
+      }
+
+      .info-dark-description, .info-dark-text {
+        font-size: 19px;
+      }
+
+      .footer-social-item {
+        font-size: 18px;
+      }
+
+      .footer-link-item {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .revista-grid, .info-dark-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .revista-card:nth-child(odd) {
+        border-right: none;
+        padding-right: 0;
+      }
+
+      .info-dark-cell.branding, .info-dark-cell.download-content {
+        padding: 50px 30px;
+      }
+
+      .site-footer {
+        flex-direction: column;
+      }
+
+      .footer-left-col, .footer-right-col {
+        width: 100%;
+        padding: 50px 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        justify-content: center;
+        padding-top: 160px;
+      }
+
+      .logo-slogan-container {
+        max-width: 90%;
+      }
+
+      .contextualizacion-section {
+        margin-top: 50px;
+      }
+
+      .statement-text {
+        font-size: 18pt;
+      }
+
+      .selecciones-section {
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 40px 20px;
+      }
+
+      .gallery-container {
+        width: 100%;
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .gallery-card, .gallery-card:hover {
+        flex: 0 0 100% !important;
+        max-width: 500px !important;
+        width: 100%;
+        align-items: center !important;
+      }
+
+      .gallery-card-title {
+        text-align: center !important;
+        padding: 0 !important;
+        font-size: 30px;
+      }
+
+      .gallery-card-image-wrapper,
+      .gallery-card:hover .gallery-card-image-wrapper {
+        height: 340px !important;
+      }
+
+      .revista-section {
+        padding: 40px 20px;
+      }
+
+      .revista-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .revista-card-content {
+        align-items: center;
+        gap: 20px;
+      }
+
+      .revista-btn {
+        align-self: center;
+      }
+
+      .revista-card-image {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 280px;
+        height: 360px;
+      }
+
+      .info-dark-title {
+        font-size: 28px;
+      }
+
+      .info-dark-description, .info-dark-text {
+        font-size: 17px;
+      }
+
+      .footer-links-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .footer-newsletter-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .footer-newsletter-label {
+        max-width: 100%;
+      }
+    }
+
+    /* Grid Overlay System */
+    .dev-grid-overlay {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 999990 !important;
+      pointer-events: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out !important;
+      box-sizing: border-box !important;
+      padding: 0 20px !important;
+    }
+
+    .dev-grid-overlay.is-active {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .dev-grid-container {
+      display: grid !important;
+      width: 100% !important;
+      height: 100% !important;
+      --grid-cols: 7;
+      --grid-gutter: 20px;
+      --grid-color-bg: rgba(255, 0, 0, 0.2);
+      --grid-color-border: rgba(255, 0, 0, 0.6);
+
+      grid-template-columns: repeat(var(--grid-cols), 1fr) !important;
+      gap: var(--grid-gutter) !important;
+      box-sizing: border-box !important;
+    }
+
+    @media (max-width: 768px) {
+      .dev-grid-container {
+        --grid-cols: 4 !important;
+      }
+    }
+
+    .dev-grid-col {
+      background-color: var(--grid-color-bg) !important;
+      border-left: 1px solid var(--grid-color-border) !important;
+      border-right: 1px solid var(--grid-color-border) !important;
+      height: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .dev-grid-toggle-btn {
+      position: fixed !important;
+      bottom: 24px !important;
+      right: 24px !important;
+      z-index: 999999 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 10px 18px !important;
+      background-color: #1e293b !important;
+      color: #ffffff !important;
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+      cursor: pointer !important;
+      user-select: none !important;
+      transition: all 0.2s ease !important;
+      pointer-events: auto !important;
+      outline: none !important;
+    }
+
+    .dev-grid-toggle-btn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+      background-color: #0f172a !important;
+    }
+
+    .dev-grid-toggle-btn.is-active {
+      background-color: #dc2626 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4) !important;
+    }
+
+    .dev-grid-toggle-btn svg {
+      width: 18px !important;
+      height: 18px !important;
+      fill: currentColor !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="header-logo">
+      <img src="imagen/logoHuman.png" alt="Logo Human">
+    </div>
+
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#inicio">INICIO</a></li>
+        <li><a href="#revista">REVISTA</a></li>
+        <li><a href="#especificaciones">ESPECIFICACIONES</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- PRIMERA SECCIÓN (HERO / MAIN) -->
+  <section class="hero-section" id="inicio">
+    <div class="logo-slogan-container">
+      <img src="imagen/logoconslogan.png" alt="Logo con Eslogan" width="1614" height="699">
+      <p class="hero-subtitle">IA generativa como socia creativa y crítica en diseño.</p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DE CONTEXTUALIZACIÓN -->
+  <section class="contextualizacion-section">
+    <img src="imagen/2 manos.png" alt="Contextualización">
+  </section>
+
+  <!-- SECCIÓN DE DECLARACIÓN / TEXTO -->
+  <section class="statement-section">
+    <p class="statement-text">
+      <strong>HUMAN×AI</strong> usa la inteligencia artificial como aliada estratégica para expandir la creatividad humana con ética y pensamiento crítico
+    </p>
+  </section>
+
+  <!-- SECCIÓN DE SELECCIONES -->
+  <section class="selecciones-section">
+    <div class="gallery-container" id="galleryContainer">
+      
+      <!-- Tarjeta 0: Create / periodico.jpg -->
+      <div class="gallery-card" data-index="0">
+        <h3 class="gallery-card-title">Create</h3>
+        <div class="gallery-card-image-wrapper">
+          <img src="imagen/periodico.jpg" alt="Create - Periodico">
+        </div>
+      </div>
+
+      <!-- Tarjeta 1: Question / 404.jpg -->
+      <div class="gallery-card" data-index="1">
+        <h3 class="gallery-card-title">Question</h3>
+        <div class="gallery-card-image-wrapper">
+          <img src="imagen/404.jpg" alt="Question - 404">
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: Evolve / Televisor.jpg -->
+      <div class="gallery-card" data-index="2">
+        <h3 class="gallery-card-title">Evolve</h3>
+        <div class="gallery-card-image-wrapper">
+          <img src="imagen/Televisor.jpg" alt="Evolve - Televisor">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Puntos de navegación -->
+    <div class="gallery-pagination" id="galleryPagination">
+      <span class="dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: ESPECIFICACIONES (Fondo claro, 2x2 GRID) -->
+  <section class="revista-section" id="especificaciones">
+    <div class="revista-grid">
+      
+      <!-- Tarjeta 1: Mano ia.jpg (720x900 px) -->
+      <div class="revista-card">
+        <div class="revista-card-image">
+          <img src="imagen/Mano ia.jpg" alt="Mano IA" width="720" height="900">
+        </div>
+        <div class="revista-card-content">
+          <p class="revista-card-text">
+            Democratización de la publicación impresa y digital mediante la integración de IA en el diseño gráfico.
+          </p>
+          <a href="#" class="revista-btn">Ver revista</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2: ojo.jpg (671x939 px) -->
+      <div class="revista-card">
+        <div class="revista-card-image">
+          <img src="imagen/ojo.jpg" alt="Reflexión Ojo IA" width="671" height="939">
+        </div>
+        <div class="revista-card-content">
+          <p class="revista-card-text">
+            Reflexión sobre la evolución del rol del diseñador ante los entornos generativos.
+          </p>
+          <a href="#" class="revista-btn">Ver revista</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: rostro.jpg (671x939 px) -->
+      <div class="revista-card">
+        <div class="revista-card-image">
+          <img src="imagen/rostro.jpg" alt="Análisis Rostro Overload" width="671" height="939">
+        </div>
+        <div class="revista-card-content">
+          <p class="revista-card-text">
+            Análisis del flujo de trabajo con IA, desde el cuestionamiento crítico hasta la maquetación editorial.
+          </p>
+          <a href="#" class="revista-btn">Ver revista</a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Persona.jpg (360x480 px) -->
+      <div class="revista-card">
+        <div class="revista-card-image">
+          <img src="imagen/Persona.jpg" alt="Investigación Persona Ilustración" width="360" height="480">
+        </div>
+        <div class="revista-card-content">
+          <p class="revista-card-text">
+            Investigación sobre diseño de publicaciones sostenibles, ecología y prospectiva.
+          </p>
+          <a href="#" class="revista-btn">Ver revista</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN: REVISTA (Fondo en ajedrez 2x2 en 4 bloques que cubren toda la sección) -->
+  <section class="info-dark-section" id="revista">
+    <div class="info-dark-grid">
+      
+      <!-- Fila 1 / Columna 1: Superior Izquierda (Gris Claro) -->
+      <div class="info-dark-cell branding cell-bg-1">
+        <img class="info-dark-logo" src="imagen/logoblanco.png" alt="Logo Human x AI Blanco" width="675" height="261">
+        <p class="info-dark-description">
+          Una plataforma de investigación y publicación editorial sobre la convergencia entre el pensamiento de diseño, el diseño ontológico y la inteligencia artificial generativa.
+        </p>
+      </div>
+
+      <!-- Fila 1 / Columna 2: Superior Derecha (Gris Oscuro) -->
+      <div class="info-dark-cell image-wrapper cell-bg-2">
+        <img src="imagen/revista 1.jpg" alt="Portada Revista Human x AI" width="1241" height="1267">
+      </div>
+
+      <!-- Fila 2 / Columna 1: Inferior Izquierda (Gris Oscuro) -->
+      <div class="info-dark-cell image-wrapper cell-bg-2">
+        <img src="imagen/revista 2.jpg" alt="Revista Human x AI 3D" width="1214" height="1295">
+      </div>
+
+      <!-- Fila 2 / Columna 2: Inferior Derecha (Gris Claro) -->
+      <div class="info-dark-cell download-content cell-bg-1">
+        <h2 class="info-dark-title">Publicacion impresa<br>y digital</h2>
+        <p class="info-dark-text">
+          Accede a nuestra edición especial en formato híbrido. Descarga la versión digital interactiva o adquiere el volumen impreso desarrollado bajo criterios de producción responsable y maquetación de acceso abierto.
+        </p>
+        <a href="#" class="info-download-btn">Descargar</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER / PIE DE PÁGINA -->
+  <footer class="site-footer">
+    
+    <!-- Columna Izquierda: Logo Blanco y Redes Sociales -->
+    <div class="footer-left-col">
+      <img class="footer-brand-logo" src="imagen/logoblanco.png" alt="Human x AI Logo Blanco" width="675" height="261">
+      
+      <ul class="footer-social-list">
+        <li>
+          <a href="#" class="footer-social-item">
+            <img class="footer-social-icon" src="imagen/facebook.png" alt="Facebook" width="52" height="53">
+            <span>Faceboock</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="footer-social-item">
+            <img class="footer-social-icon" src="imagen/IG.png" alt="Instagram" width="52" height="53">
+            <span>Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="footer-social-item">
+            <img class="footer-social-icon" src="imagen/X.png" alt="Twitter / X" width="52" height="53">
+            <span>Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="footer-social-item">
+            <img class="footer-social-icon" src="imagen/youtube.png" alt="Youtube" width="52" height="53">
+            <span>Youtube</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna Derecha: Formulario de Suscripción y Links del Mapa del Sitio -->
+    <div class="footer-right-col">
+      
+      <!-- Fila de Suscripción -->
+      <div class="footer-newsletter-row">
+        <label for="newsletterEmail" class="footer-newsletter-label">
+          Suscribete a nuestro boletin
+        </label>
+        <input type="email" id="newsletterEmail" class="footer-newsletter-input" placeholder="">
+        <button type="button" class="footer-newsletter-btn">Suscribirse</button>
+      </div>
+
+      <!-- Mapa de Enlaces -->
+      <div class="footer-links-grid">
+        <div class="footer-links-col">
+          <a href="#inicio" class="footer-link-item">Inicio / Portada</a>
+          <a href="#revista" class="footer-link-item">Ediciones de la Revista</a>
+          <a href="#" class="footer-link-item">Manifiesto & Metodología</a>
+          <a href="#especificaciones" class="footer-link-item">Especificaciones Técnicas</a>
+          <a href="#" class="footer-link-item">Archivo de Publicaciones</a>
+          <a href="#" class="footer-link-item">Descargar PDF / EPUB</a>
+        </div>
+        
+        <div class="footer-links-col">
+          <a href="#" class="footer-link-item">Diseño Ontológico & Futuros</a>
+          <a href="#" class="footer-link-item">Ética y Práctica Re-directiva</a>
+          <a href="#" class="footer-link-item">Formatos Accesibles & Open Source</a>
+          <a href="#" class="footer-link-item">IA Generativa como Partner Creativo</a>
+          <a href="#" class="footer-link-item">Guía de Prompts Críticos</a>
+        </div>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- COMPONENTES DE LA GRILLA OVERLAY Y SCRIPT -->
+  <div id="devGridOverlay" class="dev-grid-overlay" aria-hidden="true">
+    <div class="dev-grid-container">
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+      <div class="dev-grid-col"></div>
+    </div>
+  </div>
+
+  <button id="devGridToggleBtn" class="dev-grid-toggle-btn" type="button" title="Alternar Grilla (Atajo: G)">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 3h4v18H3V3zm7 0h4v18h-4V3zm7 0h4v18h-4V3z"/>
+    </svg>
+    <span>Grid</span>
+  </button>
+
+  <script>
+    (function() {
+      // 1. Lógica dinámica de Puntos de la Galería
+      function initGalleryPagination() {
+        const cards = document.querySelectorAll('.gallery-card');
+        const dots = document.querySelectorAll('.gallery-pagination .dot');
+        const container = document.getElementById('galleryContainer');
+
+        if (!cards.length || !dots.length) return;
+
+        function setActiveDot(index) {
+          dots.forEach((dot, i) => {
+            if (index !== null && i === parseInt(index)) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+
+        cards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+            const index = this.getAttribute('data-index');
+            setActiveDot(index);
+          });
+        });
+
+        if (container) {
+          container.addEventListener('mouseleave', function() {
+            setActiveDot(null);
+          });
+        }
+      }
+
+      // 2. Control de Grilla Developer
+      function initDevGrid() {
+        const overlay = document.getElementById('devGridOverlay');
+        const toggleBtn = document.getElementById('devGridToggleBtn');
+        const STORAGE_KEY = 'dev_grid_overlay_active';
+
+        if (!overlay || !toggleBtn) return;
+
+        function toggleGrid(forceState = null) {
+          const isActive = forceState !== null 
+            ? forceState 
+            : !overlay.classList.contains('is-active');
+
+          if (isActive) {
+            overlay.classList.add('is-active');
+            toggleBtn.classList.add('is-active');
+            overlay.setAttribute('aria-hidden', 'false');
+            localStorage.setItem(STORAGE_KEY, 'true');
+          } else {
+            overlay.classList.remove('is-active');
+            toggleBtn.classList.remove('is-active');
+            overlay.setAttribute('aria-hidden', 'true');
+            localStorage.setItem(STORAGE_KEY, 'false');
+          }
+        }
+
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleGrid();
+        });
+
+        document.addEventListener('keydown', function(e) {
+          const targetTag = e.target.tagName.toLowerCase();
+          if (targetTag === 'input' || targetTag === 'textarea' || e.target.isContentEditable) return;
+          if (e.key === 'g' || e.key === 'G') toggleGrid();
+        });
+
+        if (localStorage.getItem(STORAGE_KEY) === 'true') {
+          toggleGrid(true);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          initGalleryPagination();
+          initDevGrid();
+        });
+      } else {
+        initGalleryPagination();
+        initDevGrid();
+      }
+    })();
+  </script>
+
+</body>
+</html>
